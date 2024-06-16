@@ -4,7 +4,9 @@
  experience format: 26 years 2 mons 17 days 
 */
 
-select emp_id,emp_name,job_name,hire_date,  as exxperience
+select emp_id,emp_name,job_name,hire_date,  
+age(CURRENT_DATE, hire_date) as experience
+as exxperience
 from employees 
 where emp_id in (
     select manager_id from employees
