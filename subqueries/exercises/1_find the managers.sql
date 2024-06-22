@@ -3,7 +3,7 @@
 
 select * from employees
 where emp_id in (
-    select manager_id from department
+    select manager_id from employees
 )
 
 
