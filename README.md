@@ -1,4 +1,4 @@
-# sql-rz
+# SQL Interview Preparation
 
-All about SQL
+In this repo, you will find interview question on SQL for Data Engineering and Data Analyst Roles
 
