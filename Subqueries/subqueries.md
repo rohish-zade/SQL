@@ -37,6 +37,8 @@
   WHERE salary > (SELECT AVG(salary) FROM employees WHERE department_id = e.  department_id);
   ```
 
+### `Potential Interview Questions:`
+
 ### Q1. What is Non-Correlated Subquery?
 - A `non-correlated subquery` is independent of the outer query. It executes once and returns a result (a single value, a single row, or multiple rows) that is used by the outer query.
 - The subquery does not depend on the outer query for its execution.
@@ -63,7 +65,7 @@
   WHERE salary > (SELECT AVG(salary) FROM employees WHERE department_id = e.department_id);
   ```
   - The inner query (`SELECT AVG(salary) FROM employees WHERE department_id = e.department_id`) references the department_id from the outer query (`e.department_id`).
-- For each row in the employees table, the subquery calculates the average salary for the corresponding department and compares it with the employee's salary.
+  - For each row in the employees table, the subquery calculates the average salary for the corresponding department and compares it with the employee's salary.
 
 #### Performance Considerations
 - Non-correlated subqueries are generally faster because they execute only once.
