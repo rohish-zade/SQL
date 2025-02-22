@@ -79,10 +79,10 @@ The difference between `UNION` and `UNION ALL` in SQL lies in how they handle du
 
 
 ### 8. self join, manager salary > employee salary
-
+- Ans: [click here](https://github.com/rohish-zade/SQL/blob/main/sql_tips_and_tricks/SQL%20Self%20Join%20Concept.md)
 
 ### 9. How many records will be return by each join(eg. inner join, left join, right join etc)
-
+- Ans: [click here](https://github.com/rohish-zade/SQL/blob/main/sql_tips_and_tricks/How%20_many_records_will_be_return_by_each%20_join.md)
 
 ### 10. Update qeury to swap Gender
 - Suppose we have below table and we want to change the gender
