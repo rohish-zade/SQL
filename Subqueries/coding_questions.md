@@ -1,4 +1,4 @@
-### Dataset
+## Dataset 1
 ```sql
 -- create a table
 create table empployee_tbl (
@@ -27,7 +27,7 @@ insert into empployee_tbl (empid, empname,department, salary, joindate) values(1
   select salary from empployee_tbl order by salary desc LIMIT 1 OFFSET 1;
   ```
 
-### Q2. Find the employee with the minimum salary in each department
+### Q2. Find the employee with the minimum/lowest salary in each department
   ```sql
   select  empname, department from (
   select *, dense_rank() over(partition by department order by salary asc) rank from empployee_tbl
@@ -80,5 +80,74 @@ insert into empployee_tbl (empid, empname,department, salary, joindate) values(1
   select department_name from departments d
   where not exists (
   select 1 from employees e where e.department_id = d.department_id
+  );
+  ```
+
+
+## Dataset 2
+  ```sql
+  select * from employee
+  ```
+
+   emp_id | emp_name | dept_id | salary | manager_id | emp_age | dob        |
+  --------|---------|---------|--------|------------|---------|------------|
+   1      | Ankit   | 100     | 10000  | 4          | 39      | 1985-02-14 |
+   2      | Mohit   | 100     | 15000  | 5          | 48      | 1976-02-14 |
+   3      | Vikas   | 100     | 10000  | 4          | 37      | 1987-02-14 |
+   4      | Rohit   | 100     | 5000   | 2          | 16      | 2008-02-14 |
+   5      | Mudit   | 200     | 12000  | 6          | 55      | 1969-02-14 |
+   6      | Agam    | 200     | 12000  | 2          | 14      | 2010-02-14 |
+   7      | Sanjay  | 200     | 9000   | 2          | 13      | 2011-02-14 |
+   8      | Ashish  | 200     | 5000   | 2          | 12      | 2012-02-14 |
+   9      | Mukesh  | 300     | 6000   | 6          | 51      | 1973-02-14 |
+   10     | Rakesh  | 500     | 7000   | 6          | 50      | 1974-02-14 |
+
+
+### Q1. Retrieve employees who earn the lowest salary in their department.
+  ```sql
+  select emp_id, emp_name, dept_id, salary
+  from employee e
+  where salary = (
+      select min(salary)
+      from employee
+      where dept_id = e.dept_id
+  );
+  ```
+
+### Q2. write a query to find employees whose age is more than average age of all the employees.
+  ```sql
+  select emp_id, emp_name, emp_age
+  from employee
+  where emp_age > (
+  select avg(emp_age) from employee
+  );
+  ```
+
+### Q3. write a query to print emp name, salary and dep id of highest salaried employee in each department
+  ```sql
+  select e.emp_name, e.salary, e.dept_id from employee e
+  where salary = (
+  select max(salary) from employee
+  where dept_id=e.dept_id)
+  order by e.dept_id;
+  ```
+
+
+## Dataset 3: orders table
+
+### Q1. Identify products that have been ordered more than 10 times using a subquery.
+  ```sql
+  select product_id, count(product_id) as count from orders
+  group by product_id
+  having count(product_id) > 10
+  ```
+
+### Q2. Find customers whose total order amount is greater than the average order amount.
+  ```sql
+  select customer_id, sum(order_amount) as total_order_amount
+  from orders
+  group by customer_id
+  having sum(order_amount) > (
+      select avg(order_amount) from orders
   );
   ```
