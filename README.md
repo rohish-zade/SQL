@@ -1,2 +1,2 @@
 # SQL
-SQL Tips and Tricks and SQL LeetCode solutions 
+SQL Notes
