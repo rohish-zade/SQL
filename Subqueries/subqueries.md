@@ -18,7 +18,7 @@
   ```sq
   SELECT employee_name 
   FROM employees 
-  WHERE department_id = (SELECT department_id FROM departments WHERE department_name =   'Sales');
+  WHERE department_id = (SELECT department_id FROM departments WHERE department_name = 'Sales');
   ```
 
 #### Multi-Row Subquery:
@@ -26,7 +26,7 @@
   ```sql
   SELECT employee_name 
   FROM employees 
-  WHERE department_id IN (SELECT department_id FROM departments WHERE location_id =   1700);
+  WHERE department_id IN (SELECT department_id FROM departments WHERE location_id =1700);
   ```
 
 #### Correlated Subquery: `(Imp)`
@@ -34,7 +34,7 @@
   ```sql
   SELECT employee_name 
   FROM employees e 
-  WHERE salary > (SELECT AVG(salary) FROM employees WHERE department_id = e.  department_id);
+  WHERE salary > (SELECT AVG(salary) FROM employees WHERE department_id = e.department_id);
   ```
 
 ### `Potential Interview Questions:`
